@@ -1,3 +1,3 @@
 # Tic Tac Toe
 
-The Misère version of Tic-tac-toe.
+Misère, x-only rules game of Tic Tac Toe, across multiple boards.
