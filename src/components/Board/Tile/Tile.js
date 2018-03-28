@@ -5,6 +5,9 @@ const Container = styled.div`
   color: ${({ color }) => color};
   font-size: 64px;
   border: 1px solid #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: ${({ color }) => (!color ? 'pointer' : 'inherit')};
 `;
 

@@ -1,6 +1,7 @@
 html {
   min-height: 100%;
   display: flex;
+  font-family: 'Indie Flower', cursive;
 }
 
 body,
