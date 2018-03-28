@@ -30,7 +30,7 @@ it('clicking on a tile "colors" it', () => {
   board
     .find(Tile)
     .first()
-    .simulate('click');
+    .simulate('click', { target: { dataset: { x: '0', y: '0' } } });
 
   expect(
     board
@@ -45,7 +45,7 @@ it('clicking on a tile does not "color" other tiles', () => {
   board
     .find(Tile)
     .first()
-    .simulate('click');
+    .simulate('click', { target: { dataset: { x: '0', y: '0' } } });
 
   expect(
     board
@@ -60,7 +60,7 @@ it('gives a red color to the first clicked tile', () => {
   board
     .find(Tile)
     .first()
-    .simulate('click');
+    .simulate('click', { target: { dataset: { x: '0', y: '0' } } });
 
   expect(
     board
@@ -75,12 +75,12 @@ it('gives the turquoise color to the second clicked tile', () => {
   board
     .find(Tile)
     .first()
-    .simulate('click');
+    .simulate('click', { target: { dataset: { x: '0', y: '0' } } });
 
   board
     .find(Tile)
     .at(1)
-    .simulate('click');
+    .simulate('click', { target: { dataset: { x: '1', y: '0' } } });
 
   expect(
     board
@@ -95,7 +95,7 @@ it('does not change anything if an already "colored" tile is clicked', () => {
   board
     .find(Tile)
     .first()
-    .simulate('click');
+    .simulate('click', { target: { dataset: { x: '0', y: '0' } } });
 
   const color = board
     .find(Tile)
@@ -105,7 +105,7 @@ it('does not change anything if an already "colored" tile is clicked', () => {
   board
     .find(Tile)
     .first()
-    .simulate('click');
+    .simulate('click', { target: { dataset: { x: '0', y: '0' } } });
 
   expect(color).toBe(
     board

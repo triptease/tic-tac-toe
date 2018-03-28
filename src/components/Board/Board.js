@@ -6,7 +6,7 @@ import Tile from './Tile/Tile';
 const Container = styled.div`
   flex: 1;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(${({ size }) => size}, 1fr);
   grid-auto-rows: 1fr;
 `;
 
@@ -39,26 +39,35 @@ class Board extends PureComponent {
     this.setState(({ rows }) => {
       const color = Board.getNextColor(rows);
       return {
-        rows: rows.map((row, x) =>
+        rows: rows.map((row, y) =>
           row.map(
-            (tile, y) => (xCoordinate === x && yCoordinate === y ? color : tile)
+            (tile, x) => (xCoordinate === x && yCoordinate === y ? color : tile)
           )
         )
       };
     });
   };
 
+  onTileClick = event => {
+    const { x, y } = event.target.dataset;
+
+    this.checkTileAtIndex(Number(x), Number(y));
+  };
+
   render() {
+    const { size } = this.props;
     const { rows } = this.state;
 
     return (
-      <Container>
-        {rows.map((row, x) =>
-          row.map((color, y) => (
+      <Container size={size}>
+        {rows.map((row, y) =>
+          row.map((color, x) => (
             <Tile
               key={`${x}.${y}`}
               color={color}
-              onClick={!color ? () => this.checkTileAtIndex(x, y) : undefined}
+              data-x={x}
+              data-y={y}
+              onClick={!color ? this.onTileClick : undefined}
             />
           ))
         )}

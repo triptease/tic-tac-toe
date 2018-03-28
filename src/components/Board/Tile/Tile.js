@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   color: ${({ color }) => color};
-  font-size: 64px;
+  font-size: 96px;
   border: 1px solid #000000;
   display: flex;
   align-items: center;
@@ -13,12 +13,8 @@ const Container = styled.div`
 
 class Tile extends PureComponent {
   render() {
-    const { color, onClick } = this.props;
-    return (
-      <Container onClick={onClick} color={color}>
-        {color ? 'x' : ''}
-      </Container>
-    );
+    const { color } = this.props;
+    return <Container {...this.props}>{color ? 'x' : ''}</Container>;
   }
 }
 
